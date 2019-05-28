@@ -1,0 +1,40 @@
+function tickets(peopleInLine){
+  let b25 = 0, b50 = 0;
+  
+  for (let i in peopleInLine)
+  {
+    switch (peopleInLine[i])
+    {
+      case 25:
+        b25++;
+        break;
+      case 50:
+        if (b25 > 0)
+        {
+          b25--;
+          b50++;
+        }
+        else
+        {
+          return "NO";
+        }
+        break;
+      case 100:
+        if (b50 > 0 && b25 > 0)
+        {
+          b50--;
+          b25--;
+        }
+        else if (b25 > 2)
+        {
+          b25 -= 3;
+        }
+        else 
+        {
+          return "NO";
+        }
+        break;
+    }
+  }
+  return "YES";
+}
